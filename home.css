@@ -91,21 +91,21 @@ nav button { top: 90.4%; width: 16%; height: 6.8%; }
   position: absolute;
   top: 2.48%;
   left: var(--profile-inset);
-  width: 22.03%;
-  height: 4.63%;
+  width: 18.7%;
+  height: 4%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2cqw;
+  gap: 1.4cqw;
   border-radius: 999px;
   background: rgb(29 50 57 / 84%);
   color: #e4f7f8;
-  font-size: 3.55cqw;
+  font-size: 3.2cqw;
   line-height: 1;
 }
 .profile-status::before {
   content: "";
-  width: 2.22cqw;
+  width: 1.75cqw;
   aspect-ratio: 1;
   border-radius: 50%;
   background: #00f0f1;
