@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: #f6f5f8 url("assets/page.png") center / 100% 100% no-repeat;
+  background: #1e1943;
   display: grid;
   place-items: center;
   min-height: 100svh;
