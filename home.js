@@ -25,7 +25,10 @@ for (const person of [...samples, ...samples]) {
       <img class="profile-photo" src="${person.photo}" alt="">
       <span class="profile-status" data-status="${person.status}">${person.status}</span>
       <div class="profile-info">
-        <div><strong>${person.nickname}</strong><small>${person.age}岁</small></div>
+        <div class="profile-identity">
+          <strong>${person.nickname}</strong>
+          <small><img src="assets/gender-female.svg" alt="女性">${person.age}岁</small>
+        </div>
         <div class="profile-tags"><span>声优</span><span>温柔</span></div>
       </div>
       <div class="profile-foot">

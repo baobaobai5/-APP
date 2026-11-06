@@ -77,7 +77,9 @@ nav button { top: 90.4%; width: 16%; height: 6.8%; }
   background: linear-gradient(transparent,#493672);
 }
 .profile-info strong { font-size: 4.8cqw; }
-.profile-info small { margin-left: 2cqw; font-size: 3.5cqw; }
+.profile-identity { display: flex; align-items: baseline; gap: 2cqw; }
+.profile-identity small { display: inline-flex; align-items: center; gap: .8cqw; font-size: 3.5cqw; }
+.profile-identity img { position: static; width: 3.2cqw; height: 4cqw; }
 .profile-tags { display: flex; gap: 1.45cqw; margin-top: 2cqw; }
 .profile-tags span {
   box-sizing: border-box; min-width: 11.3cqw; height: 5.6cqw;
