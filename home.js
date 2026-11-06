@@ -9,6 +9,67 @@ function notify(action, detail) {
   home.dispatchEvent(new CustomEvent('profile:' + action, { bubbles: true, detail }));
 }
 
+const samples = [
+  { nickname: '阿禾', age: 25, city: '上海市', tags: ['阅读', '咖啡'], signature: '想和你交换一本喜欢的书。', photo: 'assets/profile-0.jpg' },
+  { nickname: '晚晴', age: 27, city: '苏州市', tags: ['摄影', '散步'], signature: '周末一起去公园晒太阳吧。', photo: 'assets/profile-1.jpg' },
+];
+const original = profiles.querySelector('article');
+const slides = [original];
+for (const person of samples) {
+  const slide = document.createElement('article');
+  slide.className = 'slide';
+  slide.dataset.name = person.nickname;
+  slide.setAttribute('aria-label', person.nickname + '的示例资料');
+  slide.innerHTML = `
+    <div class="profile-content">
+      <img class="profile-photo" src="${person.photo}" alt="">
+      <span class="sample-status">示例资料</span>
+      <div class="profile-info">
+        <div><strong>${person.nickname}</strong><small>${person.age}岁</small></div>
+        <div class="profile-tags">${person.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+      </div>
+      <div class="profile-foot">${person.city}<p>${person.signature}</p></div>
+    </div>`;
+  const chatImage = original.querySelector('#chat').cloneNode();
+  chatImage.removeAttribute('id');
+  const chat = original.querySelector('button').cloneNode();
+  chat.setAttribute('aria-label', '与' + person.nickname + '聊天');
+  slide.append(chatImage, chat);
+  original.before(slide);
+  slides.push(slide);
+}
+
+let active = 0;
+let timer;
+let start;
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+function render() {
+  profiles.classList.toggle('original', active === 0);
+  slides.forEach((slide, index) => {
+    const offset = (index - active + slides.length) % slides.length;
+    slide.dataset.position = ['center', 'right', 'left'][offset];
+    slide.inert = offset !== 0;
+  });
+}
+function schedule() {
+  clearTimeout(timer);
+  if (document.hidden || reducedMotion.matches || start || document.activeElement === input ||
+      profiles.matches(':has(:focus-visible)')) return;
+  timer = setTimeout(() => browse('next', 'auto'), 5000);
+}
+function browse(direction, source = 'manual') {
+  active = (active + (direction === 'next' ? 1 : -1) + slides.length) % slides.length;
+  render();
+  schedule();
+  notify('browse', { direction, source, nickname: slides[active].dataset.name });
+}
+document.addEventListener('visibilitychange', schedule);
+home.addEventListener('focusin', schedule);
+home.addEventListener('focusout', () => queueMicrotask(schedule));
+reducedMotion.addEventListener('change', schedule);
+render();
+schedule();
+
 input.addEventListener('input', () => {
   form.classList.toggle('has-value', Boolean(input.value));
   if (!input.value) notify('search', { nickname: '' });
@@ -22,24 +83,25 @@ form.addEventListener('submit', event => {
 home.addEventListener('click', event => {
   const action = event.target.closest('button')?.dataset.action;
   if (!action) return;
-  if (action === 'previous' || action === 'next') notify('browse', { direction: action });
-  else if (action === 'chat') notify('chat', { nickname: '小雨' });
+  if (action === 'previous' || action === 'next') browse(action);
+  else if (action === 'chat') notify('chat', { nickname: slides[active].dataset.name });
   else if (action === 'publish') notify('publish', {});
   else notify('navigate', { target: action });
 });
 
-let start;
 profiles.addEventListener('pointerdown', event => {
   if (event.isPrimary && event.button === 0) start = { x: event.clientX, y: event.clientY };
+  schedule();
 });
-window.addEventListener('pointercancel', () => { start = null; });
+window.addEventListener('pointercancel', () => { start = null; schedule(); });
 window.addEventListener('pointerup', event => {
   if (!event.isPrimary || !start) return;
   const dx = event.clientX - start.x;
   const dy = event.clientY - start.y;
   start = null;
+  schedule();
   if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-  notify('browse', { direction: dx < 0 ? 'next' : 'previous' });
+  browse(dx < 0 ? 'next' : 'previous');
   const suppress = click => { click.stopImmediatePropagation(); };
   home.addEventListener('click', suppress, { capture: true, once: true });
   setTimeout(() => home.removeEventListener('click', suppress, true), 0);
