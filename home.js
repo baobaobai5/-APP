@@ -14,7 +14,8 @@ const samples = [
   { nickname: '晚晴', age: 27, city: '苏州市', status: '在线', signature: '周末一起去公园晒太阳吧。', photo: 'assets/profile-1.jpg' },
 ];
 const slides = [];
-for (const person of samples) {
+// Repeat the two profiles so both neighboring positions have a card at the loop boundary.
+for (const person of [...samples, ...samples]) {
   const slide = document.createElement('article');
   slide.className = 'slide';
   slide.dataset.name = person.nickname;
@@ -41,7 +42,8 @@ let start;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function render() {
   slides.forEach((slide, index) => {
-    slide.dataset.position = index === active ? 'center' : (index < active ? 'left' : 'right');
+    const distance = (index - active + slides.length) % slides.length;
+    slide.dataset.position = ['center', 'right', 'offscreen', 'left'][distance];
     slide.inert = index !== active;
   });
 }
