@@ -72,7 +72,7 @@ nav button[aria-current="page"] > span:first-of-type {
 nav button svg, .nav-photo { position: static; width: 6cqw; height: 6cqw; }
 nav button:not([aria-current]) svg { color: #81818a; }
 .nav-photo { opacity: .72; clip-path: circle(42%); filter: grayscale(1); }
-.compass { filter: grayscale(1) brightness(1.45); }
+.compass { transform: scale(.93); filter: grayscale(1) brightness(1.45); }
 .nav-badge {
   position: absolute; left: 54%; top: 9%; border-radius: 999px;
   min-width: 3.9cqw; line-height: 3.9cqw; font-size: 2.6cqw; color: white; background: #e03447;
@@ -82,11 +82,17 @@ nav button:not([aria-current]) svg { color: #81818a; }
 nav [data-action="publish"] {
   left: 50%; top: 91%;
   transform: translate(-50%, -50%);
-  width: max(44px, 14.4cqw); height: auto; aspect-ratio: 1;
+  width: 44px; height: 44px;
+}
+nav [data-action="publish"]::before {
+  content: "";
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
   background: var(--publish-gradient);
   box-shadow: 0 2px 5px rgb(130 65 190 / 22%), inset 0 0 0 1px rgb(114 48 178 / 12%);
 }
-nav [data-action="publish"] svg { width: 60%; height: 60%; }
+nav [data-action="publish"] svg { position: relative; width: 24px; height: 24px; }
 [data-action="messages"] { left: 62%; }
 [data-action="me"] { left: 80%; }
 /* Give the photo its own gesture surface under the card controls. */
