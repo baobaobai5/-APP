@@ -73,7 +73,6 @@ render();
 schedule();
 
 input.addEventListener('input', () => {
-  form.classList.toggle('has-value', Boolean(input.value));
   if (!input.value) notify('search', { nickname: '' });
 });
 form.addEventListener('submit', event => {

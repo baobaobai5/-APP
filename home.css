@@ -14,7 +14,6 @@ main {
   container-type: inline-size;
 }
 header img { filter: grayscale(1) contrast(2) invert(1); }
-#search { border-radius: 999px; }
 #navigation { clip-path: url(#nav-outline); }
 img, input, button { position: absolute; }
 img { display: block; pointer-events: none; user-select: none; }
@@ -27,9 +26,14 @@ input, button {
 :focus-visible { outline: 2px solid #ab92ff; outline-offset: -2px; }
 input {
   left: 3.87324%; top: 5.85%; width: 92.60563%; height: 4.60455%;
-  padding: 0 4% 0 10.2%; color: white; font: 4.2cqw system-ui;
+  padding: 0 4% 0 10.2%;
+  background: rgb(229 224 246 / 52%) url("assets/search-icon.svg") 3.8cqw center / 4.5cqw 4.5cqw no-repeat;
+  border: 1px solid rgb(104 89 140 / 19%);
+  color: #383345;
+  font: 3.8cqw system-ui;
 }
-form:focus-within #placeholder, form.has-value #placeholder { visibility: hidden; }
+input::placeholder { color: #655d74; opacity: 1; }
+input:focus-visible { outline-color: #84729f; }
 button { cursor: pointer; }
 .chat { left: 74.5%; top: 77.3%; width: 12%; height: 5.8%; }
 .previous, .next { top: 21.72%; height: 57.15%; width: 9%; }
