@@ -15,7 +15,17 @@ main {
 }
 header img { filter: grayscale(1) contrast(2) invert(1); }
 #navigation {
-  position: absolute; inset: 87.2156% 0 0; background: #fff; clip-path: url(#nav-outline);
+  position: absolute;
+  inset: 87.2156% 0 0;
+  filter: drop-shadow(0 -2px 4px rgb(59 50 92 / 13%));
+  pointer-events: none;
+}
+#navigation::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: url(#nav-outline);
+  background: linear-gradient(105deg, #d5e4e5, #deddec 52%, #e0d6ec);
 }
 .gesture-bar {
   position: absolute; left: 33%; bottom: 1.23%; width: 34%; height: .7%;
@@ -48,9 +58,9 @@ button { cursor: pointer; }
 nav button {
   top: 90.4%; width: 16%; height: 6.8%; padding: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: .6cqw; color: #696970; font: 2.95cqw/1.2 system-ui;
+  gap: .6cqw; color: #565660; font: 2.95cqw/1.2 system-ui;
 }
-nav button[aria-current="page"] { color: #8547ce; }
+nav button[aria-current="page"] { color: #713ab0; }
 nav button svg, .nav-photo { position: static; width: 6cqw; height: 6cqw; }
 .nav-photo { clip-path: circle(42%); filter: grayscale(1); }
 .compass { filter: grayscale(1) brightness(1.45); }
