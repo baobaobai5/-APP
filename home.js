@@ -19,11 +19,11 @@ for (const person of samples) {
   const slide = document.createElement('article');
   slide.className = 'slide';
   slide.dataset.name = person.nickname;
-  slide.setAttribute('aria-label', person.nickname + '的示例资料');
+  slide.setAttribute('aria-label', person.nickname + '，勿扰，示例资料');
   slide.innerHTML = `
     <div class="profile-content">
       <img class="profile-photo" src="${person.photo}" alt="">
-      <span class="sample-status">示例资料</span>
+      <span class="profile-status">勿扰</span>
       <div class="profile-info">
         <div><strong>${person.nickname}</strong><small>${person.age}岁</small></div>
         <div class="profile-tags">${person.tags.map(tag => `<span>${tag}</span>`).join('')}</div>

@@ -79,9 +79,31 @@ nav button { top: 90.4%; width: 16%; height: 6.8%; }
 .profile-info strong { font-size: 4.8cqw; }
 .profile-info small { margin-left: 2cqw; font-size: 3.5cqw; }
 .profile-tags { display: flex; gap: 1.4cqw; margin-top: 2cqw; }
-.profile-tags span, .sample-status { border-radius: 4cqw; font-size: 3.1cqw; padding: .4cqw 2cqw; }
+.profile-tags span { border-radius: 4cqw; font-size: 3.1cqw; padding: .4cqw 2cqw; }
 .profile-tags span { background: #ffffff24; }
-.sample-status { position: absolute; top: 2.3%; left: 3.4%; background: #32294488; }
+.profile-status {
+  position: absolute;
+  top: 2.48%;
+  left: 3.67%;
+  width: 22.03%;
+  height: 4.63%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2cqw;
+  border-radius: 999px;
+  background: rgb(29 50 57 / 84%);
+  color: #e4f7f8;
+  font-size: 3.55cqw;
+  line-height: 1;
+}
+.profile-status::before {
+  content: "";
+  width: 2.22cqw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #00f0f1;
+}
 .profile-foot { position: absolute; top: 88.6%; padding: 1.4cqw 16cqw 0 4.8cqw; font-size: 3.6cqw; }
 .profile-foot p { margin: .8cqw 0 0; font-size: 3.1cqw; color: #e2daee; }
 @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
