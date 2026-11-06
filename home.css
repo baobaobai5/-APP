@@ -122,16 +122,15 @@ nav [data-action="publish"] svg { position: relative; width: 24px; height: 24px;
 .chat-icon { left: 75%; top: 77.519%; width: 11.385%; height: 5.309%; }
 .profile-content {
   --profile-inset: 3.67%;
-  --profile-surface: #625a72;
   position: absolute; left: 10.094%; top: 16.197%; width: 79.93%; height: 67.822%;
-  border-radius: 3cqw; overflow: hidden; background: var(--profile-surface); color: white;
+  border-radius: 3cqw; overflow: hidden; background: #47356e; color: white;
   font-family: system-ui,sans-serif; box-shadow: 0 1cqw 2.4cqw #17103266;
 }
 .profile-photo { inset: 0; width: 100%; height: 88.6%; object-fit: cover; }
 .profile-info {
   position: absolute; inset: 46% 0 11.4%; display: flex; flex-direction: column;
   justify-content: flex-end; padding: 0 4.8cqw 3.2cqw var(--profile-inset);
-  background: linear-gradient(to bottom, rgb(98 90 114 / 0%), var(--profile-surface) 94%);
+  background: linear-gradient(transparent,#493672);
 }
 .profile-info strong { font-size: 4.8cqw; }
 .profile-identity { display: flex; align-items: baseline; gap: 2cqw; }
