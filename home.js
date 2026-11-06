@@ -10,32 +10,28 @@ function notify(action, detail) {
 }
 
 const samples = [
-  { nickname: '阿禾', age: 25, city: '上海市', tags: ['阅读', '咖啡'], signature: '想和你交换一本喜欢的书。', photo: 'assets/profile-0.jpg' },
-  { nickname: '晚晴', age: 27, city: '苏州市', tags: ['摄影', '散步'], signature: '周末一起去公园晒太阳吧。', photo: 'assets/profile-1.jpg' },
+  { nickname: '阿禾', age: 25, city: '上海市', status: '勿扰', signature: '想和你交换一本喜欢的书。', photo: 'assets/profile-0.jpg' },
+  { nickname: '晚晴', age: 27, city: '苏州市', status: '在线', signature: '周末一起去公园晒太阳吧。', photo: 'assets/profile-1.jpg' },
 ];
-const original = profiles.querySelector('article');
-const slides = [original];
+const slides = [];
 for (const person of samples) {
   const slide = document.createElement('article');
   slide.className = 'slide';
   slide.dataset.name = person.nickname;
-  slide.setAttribute('aria-label', person.nickname + '，勿扰，示例资料');
+  slide.setAttribute('aria-label', person.nickname + '，' + person.status + '，示例资料');
   slide.innerHTML = `
     <div class="profile-content">
       <img class="profile-photo" src="${person.photo}" alt="">
-      <span class="profile-status">勿扰</span>
+      <span class="profile-status" data-status="${person.status}">${person.status}</span>
       <div class="profile-info">
         <div><strong>${person.nickname}</strong><small>${person.age}岁</small></div>
-        <div class="profile-tags">${person.tags.map(tag => `<span>${tag}</span>`).join('')}</div>
+        <div class="profile-tags"><span>声优</span><span>温柔</span></div>
       </div>
       <div class="profile-foot">${person.city}<p>${person.signature}</p></div>
-    </div>`;
-  const chatImage = original.querySelector('#chat').cloneNode();
-  chatImage.removeAttribute('id');
-  const chat = original.querySelector('button').cloneNode();
-  chat.setAttribute('aria-label', '与' + person.nickname + '聊天');
-  slide.append(chatImage, chat);
-  original.before(slide);
+    </div>
+    <img class="chat-icon" src="assets/chat.png" alt="">
+    <button class="chat" data-action="chat" aria-label="与${person.nickname}聊天"></button>`;
+  profiles.append(slide);
   slides.push(slide);
 }
 
@@ -44,11 +40,9 @@ let timer;
 let start;
 const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 function render() {
-  profiles.classList.toggle('original', active === 0);
   slides.forEach((slide, index) => {
-    const offset = (index - active + slides.length) % slides.length;
-    slide.dataset.position = ['center', 'right', 'left'][offset];
-    slide.inert = offset !== 0;
+    slide.dataset.position = index === active ? 'center' : (index < active ? 'left' : 'right');
+    slide.inert = index !== active;
   });
 }
 function schedule() {

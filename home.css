@@ -58,13 +58,11 @@ nav button { top: 90.4%; width: 16%; height: 6.8%; }
   transition: transform .45s cubic-bezier(.22,.68,.18,1);
 }
 .slide[data-position="center"] { z-index: 1; }
-.slide[data-position="left"] { transform: translateX(-75.2%) scale(.84); }
-.slide[data-position="right"] { transform: translateX(75.2%) scale(.84); }
+.slide[data-position="left"] { transform: translateX(-100%); }
+.slide[data-position="right"] { transform: translateX(100%); }
 .slide[inert] button { pointer-events: none !important; }
 #profiles .previous, #profiles .next { z-index: 3; }
-#profiles img:is(#left-preview,#right-preview,#pin-side,#chat-side) { visibility: hidden; }
-#profiles.original img:is(#left-preview,#right-preview,#pin-side,#chat-side) { visibility: visible; }
-.original .slide[inert] { visibility: hidden; }
+.chat-icon { left: 75%; top: 77.519%; width: 11.385%; height: 5.309%; }
 .profile-content {
   position: absolute; left: 10.094%; top: 16.197%; width: 79.93%; height: 67.822%;
   border-radius: 3cqw; overflow: hidden; background: #47356e; color: white;
@@ -78,9 +76,13 @@ nav button { top: 90.4%; width: 16%; height: 6.8%; }
 }
 .profile-info strong { font-size: 4.8cqw; }
 .profile-info small { margin-left: 2cqw; font-size: 3.5cqw; }
-.profile-tags { display: flex; gap: 1.4cqw; margin-top: 2cqw; }
-.profile-tags span { border-radius: 4cqw; font-size: 3.1cqw; padding: .4cqw 2cqw; }
-.profile-tags span { background: #ffffff24; }
+.profile-tags { display: flex; gap: 1.45cqw; margin-top: 2cqw; }
+.profile-tags span {
+  box-sizing: border-box; min-width: 11.3cqw; height: 5.6cqw;
+  display: grid; place-items: center; border-radius: 99px;
+  border: 1px solid #ba86f4; background: #a76adc42;
+  color: #f6ebff; font-size: 3.15cqw; line-height: 1;
+}
 .profile-status {
   position: absolute;
   top: 2.48%;
@@ -104,6 +106,8 @@ nav button { top: 90.4%; width: 16%; height: 6.8%; }
   border-radius: 50%;
   background: #00f0f1;
 }
+.profile-status[data-status="勿扰"] { background: rgb(71 41 24 / 90%); color: #ffdfaa; }
+.profile-status[data-status="勿扰"]::before { background: #ffb64b; }
 .profile-foot { position: absolute; top: 88.6%; padding: 1.4cqw 16cqw 0 4.8cqw; font-size: 3.6cqw; }
 .profile-foot p { margin: .8cqw 0 0; font-size: 3.1cqw; color: #e2daee; }
 @media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
