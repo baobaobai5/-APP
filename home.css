@@ -7,6 +7,10 @@ body {
   min-height: 100svh;
 }
 main {
+  --accent-start: #d54cfc;
+  --accent-mid: #aa48f7;
+  --accent-end: #8a4af8;
+  --publish-gradient: linear-gradient(100deg, var(--accent-start), var(--accent-mid) 55%, var(--accent-end));
   position: relative;
   width: min(375px, 100%, calc(100svh * 375 / 812));
   aspect-ratio: 375 / 812;
@@ -17,7 +21,6 @@ header img { filter: grayscale(1) contrast(2) invert(1); }
 #navigation {
   position: absolute;
   inset: 87.2156% 0 0;
-  filter: drop-shadow(0 -2px 4px rgb(59 50 92 / 13%));
   pointer-events: none;
 }
 #navigation::before {
@@ -25,7 +28,7 @@ header img { filter: grayscale(1) contrast(2) invert(1); }
   position: absolute;
   inset: 0;
   clip-path: url(#nav-outline);
-  background: linear-gradient(105deg, #d5e4e5, #deddec 52%, #e0d6ec);
+  background: #dddced;
 }
 .gesture-bar {
   position: absolute; left: 33%; bottom: 1.23%; width: 34%; height: .7%;
@@ -60,9 +63,9 @@ nav button {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: .6cqw; color: #565660; font: 2.95cqw/1.2 system-ui;
 }
-nav button[aria-current="page"] svg { fill: url(#chat-accent); }
+nav button[aria-current="page"] svg { fill: url(#publish-accent); }
 nav button[aria-current="page"] > span:first-of-type {
-  background: linear-gradient(135deg, #9547ae, #7737ad);
+  background: var(--publish-gradient);
   background-clip: text;
   color: transparent;
 }
@@ -80,7 +83,7 @@ nav [data-action="publish"] {
   left: 50%; top: 91%;
   transform: translate(-50%, -50%);
   width: max(44px, 14.4cqw); height: auto; aspect-ratio: 1;
-  background: linear-gradient(100deg, #d54cfc, #aa48f7 55%, #8a4af8);
+  background: var(--publish-gradient);
   box-shadow: 0 2px 5px rgb(130 65 190 / 22%), inset 0 0 0 1px rgb(114 48 178 / 12%);
 }
 nav [data-action="publish"] svg { width: 60%; height: 60%; }
