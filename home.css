@@ -60,7 +60,12 @@ nav button {
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   gap: .6cqw; color: #565660; font: 2.95cqw/1.2 system-ui;
 }
-nav button[aria-current="page"] { color: #713ab0; }
+nav button[aria-current="page"] svg { fill: url(#chat-accent); }
+nav button[aria-current="page"] > span:first-of-type {
+  background: linear-gradient(135deg, #9547ae, #7737ad);
+  background-clip: text;
+  color: transparent;
+}
 nav button svg, .nav-photo { position: static; width: 6cqw; height: 6cqw; }
 nav button:not([aria-current]) svg { color: #81818a; }
 #publish { clip-path: circle(47% at 50% 49.5%); }
