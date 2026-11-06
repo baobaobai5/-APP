@@ -8,8 +8,8 @@ body {
 }
 main {
   position: relative;
-  width: min(100vw, calc(100svh * 375 / 812));
-  height: min(100svh, calc(100vw * 1846 / 852));
+  width: min(375px, 100%, calc(100svh * 375 / 812));
+  aspect-ratio: 375 / 812;
   overflow: hidden;
   container-type: inline-size;
 }
