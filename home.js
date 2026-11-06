@@ -28,7 +28,10 @@ for (const person of [...samples, ...samples]) {
         <div><strong>${person.nickname}</strong><small>${person.age}岁</small></div>
         <div class="profile-tags"><span>声优</span><span>温柔</span></div>
       </div>
-      <div class="profile-foot">${person.city}<p>${person.signature}</p></div>
+      <div class="profile-foot">
+        <div class="profile-city"><img src="assets/location.svg" alt="">${person.city}</div>
+        <p>${person.signature}</p>
+      </div>
     </div>
     <img class="chat-icon" src="assets/chat.png" alt="">
     <button class="chat" data-action="chat" aria-label="与${person.nickname}聊天"></button>`;
