@@ -62,7 +62,9 @@ nav button {
 }
 nav button[aria-current="page"] { color: #713ab0; }
 nav button svg, .nav-photo { position: static; width: 6cqw; height: 6cqw; }
-.nav-photo { clip-path: circle(42%); filter: grayscale(1); }
+nav button:not([aria-current]) svg { color: #81818a; }
+#publish { clip-path: circle(47% at 50% 49.5%); }
+.nav-photo { opacity: .72; clip-path: circle(42%); filter: grayscale(1); }
 .compass { filter: grayscale(1) brightness(1.45); }
 .nav-badge {
   position: absolute; left: 54%; top: 9%; border-radius: 999px;
