@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: #1e1943;
+  background: #f6f5f8 url("assets/page.png") center / 100% 100% no-repeat;
   display: grid;
   place-items: center;
   min-height: 100svh;
@@ -13,6 +13,9 @@ main {
   overflow: hidden;
   container-type: inline-size;
 }
+header img { filter: grayscale(1) contrast(2) invert(1); }
+#search { border-radius: 999px; }
+#navigation { clip-path: url(#nav-outline); }
 img, input, button { position: absolute; }
 img { display: block; pointer-events: none; user-select: none; }
 input, button {
