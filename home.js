@@ -10,6 +10,8 @@ function notify(action, detail) {
 }
 
 const samples = [
+  { nickname: '紫苏', age: 25, city: '杭州市', status: '在线', tags: ['插画', '散步'], signature: '今天的晚霞，想画给你看。', photo: 'assets/profile-lilac.jpg' },
+  { nickname: '初澄', age: 26, city: '厦门市', status: '在线', tags: ['旅行', '音乐'], signature: '海边散步时，喜欢听哪首歌？', photo: 'assets/profile-blue.jpg', male: true },
   { nickname: '阿禾', age: 25, city: '上海市', status: '勿扰', tags: ['声优', '温柔'], signature: '想和你交换一本喜欢的书。', photo: 'assets/profile-0.jpg' },
   { nickname: '晚晴', age: 27, city: '苏州市', status: '在线', tags: ['声优', '温柔'], signature: '周末一起去公园晒太阳吧。', photo: 'assets/profile-1.jpg' },
   { nickname: '知夏', age: 26, city: '成都市', status: '离线', tags: ['声优', '温柔'], signature: '喜欢花市，也喜欢慢慢逛。', photo: 'assets/profile-2.jpg' },
