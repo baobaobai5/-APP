@@ -53,11 +53,6 @@ input {
 input::placeholder { color: #655d74; opacity: 1; }
 input:focus-visible { outline-color: #84729f; }
 button { cursor: pointer; }
-.chat { left: 74.5%; top: 77.3%; width: 12%; height: 5.8%; }
-.previous, .next { top: 21.72%; height: 57.15%; width: 9%; }
-.previous { left: 0; }
-.next { right: 0; }
-#profiles { touch-action: pan-y; }
 nav button {
   top: 90.4%; width: 16%; height: 6.8%; padding: 0;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -95,81 +90,41 @@ nav [data-action="publish"]::before {
 nav [data-action="publish"] svg { position: relative; width: 24px; height: 24px; }
 [data-action="messages"] { left: 62%; }
 [data-action="me"] { left: 80%; }
-/* Give the photo its own gesture surface under the card controls. */
-#profiles::before {
-  content: "";
-  position: absolute;
-  inset: 16.197% 0 15.98%;
-  touch-action: pan-y;
+#profiles {
+  position: absolute; inset: 12% 0 13%;
+  overflow-y: auto; overscroll-behavior: contain;
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start; gap: 2.5cqw; padding: 0 3.87cqw 3cqw;
+  scrollbar-width: none;
 }
-
-/* Each slide shares the handoff canvas, including the photo and footer coordinates. */
-#profiles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; clip-path: inset(0 .82%); }
-#profiles::before, #profiles button { pointer-events: auto; }
-.slide {
-  position: absolute;
-  inset: 0;
-  transform-origin: 50% 51.2%;
-  pointer-events: none;
-  transition: transform .45s cubic-bezier(.22,.68,.18,1);
+#profiles::-webkit-scrollbar { display: none; }
+.profile-column { display: grid; gap: 2.5cqw; }
+.profile-card {
+  overflow: hidden; border-radius: 3.2cqw; color: white;
+  background: #47356e; font-family: system-ui, sans-serif;
+  box-shadow: 0 2px 6px rgb(33 25 65 / 16%);
 }
-.slide[data-position="center"] { z-index: 1; }
-.slide[data-position="left"] { transform: translateX(-75.4%) scale(.843); }
-.slide[data-position="right"] { transform: translateX(75.35%) scale(.843); }
-.slide[data-position="offscreen"] { display: none; }
-.slide[inert] button { pointer-events: none !important; }
-#profiles .previous, #profiles .next { z-index: 3; }
-.chat-icon { left: 75%; top: 77.519%; width: 11.385%; height: 5.309%; }
-.profile-content {
-  --profile-inset: 3.67%;
-  position: absolute; left: 10.094%; top: 16.197%; width: 79.93%; height: 67.822%;
-  border-radius: 3cqw; overflow: hidden; background: #47356e; color: white;
-  font-family: system-ui,sans-serif; box-shadow: 0 1cqw 2.4cqw #17103266;
+.profile-cover { position: relative; aspect-ratio: var(--photo-ratio); }
+.profile-photo { width: 100%; height: 100%; object-fit: cover; object-position: 50% 35%; }
+.profile-identity {
+  position: absolute; inset: auto 0 0; display: flex; align-items: baseline; gap: 1.4cqw;
+  padding: 9cqw 2.5cqw 1.2cqw; background: linear-gradient(transparent, #47356e);
 }
-.profile-photo { inset: 0; width: 100%; height: 88.6%; object-fit: cover; }
-.profile-info {
-  position: absolute; inset: 46% 0 11.4%; display: flex; flex-direction: column;
-  justify-content: flex-end; padding: 0 4.8cqw 3.2cqw var(--profile-inset);
-  background: linear-gradient(transparent,#493672);
-}
-.profile-info strong { font-size: 4.8cqw; }
-.profile-identity { display: flex; align-items: baseline; gap: 2cqw; }
-.profile-identity small { display: inline-flex; align-items: center; gap: .8cqw; font-size: 3.5cqw; }
-.profile-identity img { position: static; width: 3.2cqw; height: 4cqw; }
-.profile-tags { display: flex; gap: 1.45cqw; margin-top: 2cqw; }
-.profile-tags span {
-  box-sizing: border-box; min-width: 11.3cqw; height: 5.6cqw;
-  display: grid; place-items: center; border-radius: 99px;
-  border: 1px solid #ba86f4; background: #a76adc42;
-  color: #f6ebff; font-size: 3.15cqw; line-height: 1;
-}
+.profile-identity strong { font-size: 4.3cqw; }
+.profile-identity small, .profile-city { display: flex; align-items: center; gap: .6cqw; font-size: 3cqw; }
+.profile-identity img, .profile-city img { position: static; width: 3.2cqw; height: 3.5cqw; }
 .profile-status {
-  position: absolute;
-  top: 2.48%;
-  left: var(--profile-inset);
-  width: 18.7%;
-  height: 4%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.4cqw;
-  border-radius: 999px;
-  background: rgb(29 50 57 / 84%);
-  color: #e4f7f8;
-  font-size: 3.2cqw;
-  line-height: 1;
+  position: absolute; top: 2.4cqw; left: 2.5cqw;
+  display: flex; align-items: center; gap: 1cqw; padding: .6cqw 1.7cqw;
+  border-radius: 999px; background: #1d3239dc; color: #e4f7f8; font-size: 2.8cqw;
 }
-.profile-status::before {
-  content: "";
-  width: 1.75cqw;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #00f0f1;
-}
-.profile-status[data-status="勿扰"] { background: rgb(71 41 24 / 90%); color: #ffdfaa; }
+.profile-status::before { content: ""; width: 1.45cqw; aspect-ratio: 1; border-radius: 50%; background: #00f0f1; }
+.profile-status[data-status="勿扰"] { background: #472918e6; color: #ffdfaa; }
 .profile-status[data-status="勿扰"]::before { background: #ffb64b; }
-.profile-foot { position: absolute; top: 88.6%; left: var(--profile-inset); right: 16cqw; padding-top: 1.4cqw; font-size: 3.6cqw; }
-.profile-city { display: flex; align-items: center; gap: .65cqw; }
-.profile-city img { position: static; width: 4cqw; height: 4cqw; }
-.profile-foot p { margin: .8cqw 0 0; font-size: 3.1cqw; color: #e2daee; }
-@media (prefers-reduced-motion: reduce) { .slide { transition: none; } }
+.profile-details { position: relative; padding: 0 2.5cqw 2.7cqw; }
+.profile-tags { display: flex; gap: 1cqw; }
+.profile-tags span { border: 1px solid #ba86f4; border-radius: 99px; background: #a76adc42; color: #f6ebff; padding: .2cqw 1.6cqw; font-size: 2.7cqw; }
+.profile-city { margin-top: 2cqw; }
+.profile-details p { margin: 1cqw 0 0; padding-right: 8.2cqw; font-size: 3cqw; line-height: 1.45; color: #e2daee; }
+.chat { right: .5cqw; bottom: 1cqw; width: 44px; height: 44px; display: grid; place-items: center; }
+.chat img { position: static; width: 7.5cqw; clip-path: circle(47%); }
