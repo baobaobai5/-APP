@@ -127,6 +127,12 @@ nav [data-action="publish"] svg { position: relative; width: 24px; height: 24px;
 .profile-tags { display: flex; gap: 1cqw; }
 .profile-tags span { border: 1px solid #ba86f4; border-radius: 99px; background: #a76adc42; color: #f6ebff; padding: .2cqw 1.6cqw; font-size: 2.7cqw; }
 .profile-city { margin-top: 2cqw; }
-.profile-details p { margin: 1cqw 0 0; padding-right: 8.2cqw; font-size: 3cqw; line-height: 1.45; color: #e2daee; }
+.profile-details p {
+  margin: 1cqw 44px 0 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 3cqw; line-height: 1.45; color: #e2daee;
+}
 .chat { right: .5cqw; bottom: 1cqw; width: 44px; height: 44px; display: grid; place-items: center; }
 .chat img { position: static; width: 7.5cqw; clip-path: circle(47%); }
