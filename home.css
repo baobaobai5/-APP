@@ -121,6 +121,8 @@ nav [data-action="publish"] svg { position: relative; width: 24px; height: 24px;
 .profile-status::before { content: ""; width: 1.45cqw; aspect-ratio: 1; border-radius: 50%; background: #00f0f1; }
 .profile-status[data-status="勿扰"] { background: #472918e6; color: #ffdfaa; }
 .profile-status[data-status="勿扰"]::before { background: #ffb64b; }
+.profile-status[data-status="离线"] { background: #34353be6; color: #f0f0f2; }
+.profile-status[data-status="离线"]::before { background: #b9bac1; }
 .profile-details { position: relative; padding: 0 2.5cqw 2.7cqw; }
 .profile-tags { display: flex; gap: 1cqw; }
 .profile-tags span { border: 1px solid #ba86f4; border-radius: 99px; background: #a76adc42; color: #f6ebff; padding: .2cqw 1.6cqw; font-size: 2.7cqw; }

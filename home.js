@@ -12,7 +12,7 @@ function notify(action, detail) {
 const samples = [
   { nickname: '阿禾', age: 25, city: '上海市', status: '勿扰', tags: ['声优', '温柔'], signature: '想和你交换一本喜欢的书。', photo: 'assets/profile-0.jpg' },
   { nickname: '晚晴', age: 27, city: '苏州市', status: '在线', tags: ['声优', '温柔'], signature: '周末一起去公园晒太阳吧。', photo: 'assets/profile-1.jpg' },
-  { nickname: '知夏', age: 26, city: '成都市', status: '在线', tags: ['声优', '温柔'], signature: '喜欢花市，也喜欢慢慢逛。', photo: 'assets/profile-2.jpg' },
+  { nickname: '知夏', age: 26, city: '成都市', status: '离线', tags: ['声优', '温柔'], signature: '喜欢花市，也喜欢慢慢逛。', photo: 'assets/profile-2.jpg' },
   { nickname: '林川', age: 28, city: '杭州市', status: '勿扰', tags: ['声优', '温柔'], signature: '沿着湖边走，找一处好风景。', photo: 'assets/profile-3.jpg', male: true },
   { nickname: '小陶', age: 29, city: '景德镇市', status: '在线', tags: ['陶艺', '手作'], signature: '今天拉的杯子终于不歪了。', photo: 'assets/profile-4.jpg' },
   { nickname: '海生', age: 26, city: '青岛市', status: '在线', tags: ['胶片', '看海'], signature: '相机还剩三张，留给落日。', photo: 'assets/profile-5.jpg', male: true },
